@@ -1,0 +1,4 @@
+noun : 
+pronoun : 
+adverb : 
+conjunction : 

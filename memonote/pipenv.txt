@@ -3,6 +3,9 @@
 # pipenv --python [version]
 pipenv --python 3.9
 
+# pipenv 삭제
+pipenv --rm
+
 # 가상환경 버젼 확인
 pipenv run python --version
 

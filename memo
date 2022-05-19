@@ -1,0 +1,2 @@
+function_name(**datas) => 임의의 갯수인 data를 Dictionary 형태로 받음
+function_name(*datas) => 임의의 갯수인 data를 List 형태로 받음

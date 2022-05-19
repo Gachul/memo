@@ -5,11 +5,21 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
     
-def null_anything():
+def practice():
+    recv_domain = 'imap.gmail.com'
+    recv_port = 993
     
-    recv_domain_name =  'imap.gmail.com'
+    send_domain = 'smtp.gmail.com'
+    send_port = 465
     
-    return 0 
+    smtp = smtplib.SMTP(send_domain, send_port)
+    
+    smtp.ehlo()     # hello
+    smtp.starttls() # TLS 사용시 필요
+    smtp.login()
+    
+    
+    return 0
 
 class EmailHTMLContent:
     def __init__(self, str_subject, template, template_params):

@@ -15,4 +15,4 @@ def hello():
 	return render_template("hiding/hello.html", title = "Hello")
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = "11029", threaded=True)
+    app.run(host = "0.0.0.0", port = "11029", debug = True, threaded=True)

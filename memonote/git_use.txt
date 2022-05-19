@@ -1,0 +1,20 @@
+#vscode 설치
+
+# git windows 다운로드
+https://git-scm.com/downloads >> 설치는 대부분 default 중간에 code 편집기 선택 부분을 vscode로 설정
+
+<Git CMD>
+cd [git 사용할 폴더]
+
+# 사용자 정보 등록
+git config --global user.name "사용자명"
+git config --global user.email "이메일 주소"
+
+# 폴더에 git 생성
+git init
+
+# git 원격 저장소 주소 등록
+git remote add origin [git repository url]
+
+# git 로컬 저장소 -> 원격 저장소(repository)
+git push origin master

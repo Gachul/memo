@@ -36,9 +36,16 @@ def test06(a: int, b: int, c: int) -> int:
     else:
         return c
 
+# function in function
+def test07(num: int) -> int:
+    return lambda addon : addon * num
+
 test01()
 val02 = test02(); print(val02)
 val03 = test03(10, "choice"); print(val03)
 val04 = test04(25, 50); print(val04)
 val05 = test05(5,10,15); print(val05)
 val06 = test06(5,10,15); print(val06)
+# test07(10) -> num is 10
+# val07(25) -> addon is 25
+val07 = test07(10); print(val07(25))

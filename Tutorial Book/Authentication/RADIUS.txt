@@ -1,0 +1,15 @@
+※ RADIUS 작동방식 (Cisco .2006)
+
+1. 배경 정보
+RADIUS(Remote Authentication Dial-In User Service)
+
+NAS(Network Access Server) 와 RADIUS 서버 간의 통신은 UDP(User Datagram Protocol)를 기반으로 합니다.
+일반적으로 RADIUS 프로토콜은 연결 없는 서버스로 간주됩니다.
+서버 가용성, 재전송 및 시간 초과와 관련된 문제는 전송 프로토콜이 아닌 RADIUS 지원 디바이스에서 처리합니다.
+
+RADIUS는 클라이언트/서버 프로토콜입니다. RADIUS 클라이언트는 일반적으로 NAS이고 RADIUS 서버는 일반적으로 UNIX 또는 Windows NT 시스템에서 실행중인 데몬 프로세스입니다.
+클라이언트는 사용자 정보를 지정된 RADIUS 서버에 전달하고 반환된 응답에 대해 작동합니다.
+RADIUS 서버는 사용자 연결 요청을 받고 사용자를 인증한 다음 클라이언트가 사용자에게 서비스를 제공하는 데 필요한 구성 정보를 반환합니다.
+RADIUS 서버는 다른 RADIUS 서버 또는 다른 종류의 인증 서버에 대한 프록시 클라이언트 역할을 할 수 있습니다.
+
+참조 : https://www.cisco.com/c/ko_kr/support/docs/security-vpn/remote-authentication-dial-user-service-radius/12433-32.html

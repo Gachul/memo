@@ -2,6 +2,7 @@
 
 1. 배경 정보
 RADIUS(Remote Authentication Dial-In User Service)
+Livingston Enterprise에서 개발되어 IETF 표준으로 소개된다.
 
 NAS(Network Access Server) 와 RADIUS 서버 간의 통신은 UDP(User Datagram Protocol)를 기반으로 합니다.
 일반적으로 RADIUS 프로토콜은 연결 없는 서버스로 간주됩니다.

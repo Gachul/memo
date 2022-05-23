@@ -14,3 +14,5 @@ RADIUS 서버는 사용자 연결 요청을 받고 사용자를 인증한 다음
 RADIUS 서버는 다른 RADIUS 서버 또는 다른 종류의 인증 서버에 대한 프록시 클라이언트 역할을 할 수 있습니다.
 
 참조 : https://www.cisco.com/c/ko_kr/support/docs/security-vpn/remote-authentication-dial-user-service-radius/12433-32.html
+
+2. RADIUS 에서의 AAA

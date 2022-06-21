@@ -25,5 +25,7 @@ def main():
     is_exist = azure_login(azid, azpw)
     
     print(is_exist)
-    
-main()
+ 
+if __name__ =="__main__":   
+    print(0)
+    #main()

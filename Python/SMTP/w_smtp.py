@@ -6,13 +6,16 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 # instead Final Variable
-_RECIEVER = 'phy1280@entrolink.com'
+_RECIEVER = 'user01@localhost'
 
 RECV_DOMAIN = 'imap.gmail.com'
 RECV_PORT = 993
     
 SEND_DOMAIN = 'smtp.gmail.com'
 SEND_PORT = 587 #TLS  |  SSL=465
+
+# _EMAIL = "root@192.168.255.84"
+# _PASSWORD = "dnflskfk"
 
 
 
@@ -24,11 +27,12 @@ with open('C:/Users/com/Desktop/Personal/resource/login.txt', 'r', encoding='utf
 # 실행 확인
 def practice() -> None:
     
-    smtp = smtplib.SMTP_SSL(SEND_DOMAIN, 465)
+    smtp = smtplib.SMTP("192.168.255.84", 25)
     
-    # smtp.ehlo()     # hello
-    # smtp.starttls() # TLS 사용시 필요
-    smtp.login(_EMAIL, _PASSWORD)
+    smtp.ehlo()     # hello
+    smtp.starttls() # TLS 사용시 필요
+    
+    # smtp.login(_EMAIL, _PASSWORD)
     
     msg = MIMEText('SMTP Test')
     msg['Subject'] = 'Title'
@@ -53,4 +57,4 @@ def Other_SMTP() -> None:
     
     smtp.quit()
     
-Other_SMTP()
+practice()

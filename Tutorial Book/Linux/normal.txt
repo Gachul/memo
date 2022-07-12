@@ -1,0 +1,6 @@
+find [위치] -name "[파일명]" | xargs grep "[찾을 문장]"
+ls [위치] -al  # [위치]의 모든 파일의 정보를 출력한다
+grep [위치] -re "[찾을 문장]"
+ps ax   # system 작동 상태
+echo "[명령어]"
+nano / vi / vim [파일 이름]

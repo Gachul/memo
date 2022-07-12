@@ -1,6 +1,4 @@
 import smtplib
-import os, copy
-from string import Template
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -13,10 +11,6 @@ RECV_PORT = 993
     
 SEND_DOMAIN = 'smtp.gmail.com'
 SEND_PORT = 587 #TLS  |  SSL=465
-
-# _EMAIL = "root@192.168.255.84"
-# _PASSWORD = "dnflskfk"
-
 
 
 with open('C:/Users/com/Desktop/Personal/resource/login.txt', 'r', encoding='utf-8') as f:

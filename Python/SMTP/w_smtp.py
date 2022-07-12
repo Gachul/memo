@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 # instead Final Variable
-_RECIEVER = 'user01@localhost'
+_RECIEVER = 'wizone@joyuri.com'
 
 RECV_DOMAIN = 'imap.gmail.com'
 RECV_PORT = 993

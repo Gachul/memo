@@ -4,7 +4,7 @@ import random, string
 
 allover = string.printable
 
-for i in range(500):
+for i in range(100):
     my_pwd = ""
     for i in range(18):
         rand_int = random.randint(0,94)

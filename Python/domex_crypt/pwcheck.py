@@ -1,39 +1,8 @@
-
-#import pymysql
 import sys
 import os
 
-#db = pymysql.connect(host = "localhost", port = 3306, user = "entro", passwd = "dnflskfk_ppx_2000", db = "radius")
-#cur = db.cursor()
-
-linear_pw = ["01234567890", "9876543210" "qwertyuiop", "QWERTYUIOP", "asdfghjkl", "ASDFGHJKL", "zxcvbnm", "ZXCVBNM", "POIUYTREWQ", "poiuytrewq", "lkjhgfdsa", "LKJHGFDSA", "mnbvcxz", "MNBVCXZ" "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcba", 
+linear_pw = ["01234567890", "9876543210", "qwertyuiop", "QWERTYUIOP", "asdfghjkl", "ASDFGHJKL", "zxcvbnm", "ZXCVBNM", "POIUYTREWQ", "poiuytrewq", "lkjhgfdsa", "LKJHGFDSA", "mnbvcxz", "MNBVCXZ", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcba", 
 "ZYXWVUTSRQPONMLKJIHGFEDCBA"] # pw
-
-# def passToDB(passwd):
-#     latest_pw = "entrolink"
-#     dummy_pw = latest_pw
-    
-#     isUse_sql = "select * from pwcheck"
-#     try:
-#         cur.execute(isUse_sql)
-#         rows = cur.fetchall()
-#         a = rows[0]
-#         # checking any space exist in rows
-#         # rows[0] = null >> error
-        
-#         for row in rows:
-#             latest_pw = row[0]
-#     except:
-#         insert_sql = "insert into pwcheck(pw) values(%s)"
-#         cur.execute(insert_sql, (passwd))
-    
-#     if(passwd == latest_pw):
-#         return 0
-#     if(latest_pw != dummy_pw):
-#         update_sql = "update pwcheck set pw = %s where pw = %s"
-#         cur.execute(update_sql,(passwd, latest_pw))    
-    # db.commit()
-    # return 1
 
 def isLinear(passwd, select_num = 0):
     for h in range(len(linear_pw)):

@@ -1,55 +1,48 @@
 import sys
-import os
+import os, string
 
-linear_pw = ["01234567890", "9876543210", "qwertyuiop", "QWERTYUIOP", "asdfghjkl", "ASDFGHJKL", "zxcvbnm", "ZXCVBNM", "POIUYTREWQ", "poiuytrewq", "lkjhgfdsa", "LKJHGFDSA", "mnbvcxz", "MNBVCXZ", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcba", 
-"ZYXWVUTSRQPONMLKJIHGFEDCBA"] # pw
+linear_pw = ["01234567890", "9876543210", "qwertyuiop", "QWERTYUIOP", "asdfghjkl", "ASDFGHJKL", "zxcvbnm", "ZXCVBNM", "POIUYTREWQ", "poiuytrewq", "lkjhgfdsa", "LKJHGFDSA", "mnbvcxz", "MNBVCXZ", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcba", "ZYXWVUTSRQPONMLKJIHGFEDCBA"] # pw
 
-def isLinear(passwd, select_num = 0):
+def isLinear(passwd):
     for h in range(len(linear_pw)):
-        select_linear = linear_pw[select_num]
+        select_linear = linear_pw[h]
         for i in range(len(passwd)-2):
             pass_section = passwd[i:i+3]
             
             for j in range(len(select_linear)-2):
                 if(pass_section == select_linear[j:j+3]):
                     return 0
-        select_num += 1
     return 1  
 
-def passAscii(pw):
-    pw_to_ascii = []
-    for i in range(len(pw)):
-        pw_to_ascii.append(ord(pw[i]))
-    return pw_to_ascii
-
 def passAllhave(passwd):
-    p_list = passAscii(passwd)
     have_upper = 0
     have_lower = 0
     have_digit = 0
     have_func = 0
-    for p_cell in p_list:
-        if(65 <= p_cell < 91):
+    
+    for piece in passwd:
+        if(piece in string.ascii_uppercase):
             have_upper += 1
-        elif(97 <= p_cell < 123):
+        elif(piece in string.ascii_lowercase):
             have_lower += 1
-        elif(33 <= p_cell < 48 or 58 <= p_cell < 65 or 91 <= p_cell < 97 or 123 <= p_cell < 127):
-            have_func += 1
-        elif(48 <= p_cell < 58):
+        elif(piece in string.digits):
             have_digit += 1
+        elif(piece in string.punctuation):
+            have_func += 1
+        elif(piece in string.whitespace):
+            return 0
             
     if(have_upper == 0 or have_lower == 0 or have_func == 0 or have_digit == 0):
         return 0
         
 def isIterate(passwd):
-    p_list = passAscii(passwd)
-    for i in range(len(p_list)-2):
-        if(p_list[i] == p_list[i+1] and p_list[i+1] == p_list[i+2]):
+    for i in range(len(passwd)-2):
+        if(passwd[i] == passwd[i+1] and passwd[i+1] == passwd[i+2]):
             return 0
     return 1
 
-def check(pw, check_key = 12):
-    if(len(pw) < 9):
+def check(pw):
+    if(len(pw) < 9 or len(pw) > 32):
         return 2
     if(isLinear(pw) == 0):
         return 3
@@ -67,3 +60,4 @@ if(isSuccess == 1):
     os.system("echo 1")
 else:
     os.system("echo 0")
+

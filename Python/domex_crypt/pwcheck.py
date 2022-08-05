@@ -29,7 +29,7 @@ def passAllhave(passwd):
             have_digit += 1
         elif(piece in string.punctuation):
             have_func += 1
-        elif(piece in string.whitespace):
+        else:
             return 0
             
     if(have_upper == 0 or have_lower == 0 or have_func == 0 or have_digit == 0):

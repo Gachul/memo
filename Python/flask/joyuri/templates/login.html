@@ -1,3 +1,5 @@
+<script src='../materials/raise_words.js'></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,8 @@
 </head>
 <body>
     <form action = "http://localhost:11029/login", method = "POST">
-        <p>ID : <input type = "text", id = "id", placeholder = "ID"></input> </p>
-        <p>PW : <input type="password", id = "password", placeholder = "Password"></input>  </p>
+        <p>ID : <input type = "text", id = "id", onkeyup = "if(this.value.match(/[ ]/)) { window.alert('No input Blank'); this.value = ''; return false; }",  placeholder = "ID"></input> </p>
+        <p>PW : <input type="password", id = "password", onkeyup = "if(this.value.match(/[ ]/)) { window.alert('No input Blank'); this.value = ''; return false; }",  placeholder = "Password"></input> </p>
         <input type = "submit", id = "submit", value = "Submit"></input>
     </form>
 </body>

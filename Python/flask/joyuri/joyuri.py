@@ -27,7 +27,7 @@ def user_login():
         
         return render_template("home.html", title = "Home")
     
-    return render_template("hiding/login.html", title = "Login")
+    return render_template("login.html", title = "Login")
     
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = "11029", debug = True, threaded=True)

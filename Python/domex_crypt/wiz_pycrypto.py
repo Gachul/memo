@@ -5,59 +5,22 @@ from base64 import b64encode as b64e
 from base64 import b64decode as b64d
 from Cryptodome.Cipher import AES
 
-# plaintext에 패딩을 더해서 text+padding화 함
 def text_pad(textline):
+    
+    pad_size = 16 - (len(textline) % 16)
+    pad_value = format(pad_size, '02x')
+    
+    padding = format(pad_value * pad_size)
+    
+    return_pad = textline.encode() + unhexing(padding.encode())
+    
+    return return_pad    # byte type
 
-    hex_text = hexing(textline.encode()).decode()   # plaintext의 data를 hex data로 변환
-    pad_size = 16 - (len(textline) % 16)            # plaintext의 길이를 16byte의 배수로 설정하기 위해 padding의 크기 조정
-    pad_value = str(hex(pad_size))[2:]              # padding값
-    if(pad_size != 16):
-        pad_value = "0" + pad_value
+def remove_text_pad(textline):
     
-    padding = "{}".format(pad_value * pad_size)
+    chk_pad = textline[-1] * (-1)
     
-    change_text = hex_text + padding        # plaintext에 padding 추가
-    
-    return_string = unhexing(change_text.encode())  # plaintext의 hex data를 data로 변환
-    
-    return return_string    # byte type
-
-# text+padding을 plaintext로 변환
-def remove_text_pad(hex_text):
-    
-    pad_list = ["01","02","03","04","05","06","07","08","09","0a","0b","0c","0d","0e","0f","10"]
-       
-    text_size = len(hex_text)
-    with_pad_block_size = int(text_size / 32)
-    
-    change_block_start = 32 * (with_pad_block_size - 1)
-    change_block_end = text_size
-    
-    change_block = hex_text[change_block_start:change_block_end]    # 마지막 32bit사이즈의 padding+text에서 plaintext만 추출
-    
-    real_count = 0
-    true_target = ""
-    no_pad_block = ""
-    
-    for i in range(16):
-        count = i * 2
-        target = change_block[count:count+2]
-        
-        if(target not in pad_list):
-            real_count = count
-            true_target = target
-            
-    if(true_target != ""):
-        no_pad_block = change_block[0:real_count + 2]
-
-    real = hex_text[:change_block_start] + no_pad_block
-    
-    # text is hex data, type is byte
-    # text is multiple of 32  ==>  plain_text(with padding) size is multiple of 16
-    
-    real_text_byte = unhexing(real.encode()).decode()
-    
-    return real_text_byte
+    return textline[:chk_pad].decode()
 
 def salt_extractor(infile):
     
@@ -66,17 +29,12 @@ def salt_extractor(infile):
         extract_salt = textfile.readline()
         
     byte_salt = b64d(extract_salt)[8:]     # remove Salted__
-    
     hex_salt = hexing(byte_salt)[:16]       # hex_salt size 16
-    
     salt = unhexing(hex_salt)               # return salt type is byte
     
     return salt
 
 def encrypt(key, iv, salt, infile, outfile):
-    
-    is_salt = b'53616c7465645f5f'
-    salting = is_salt + salt
     
     read_text = ""
     with open(infile, 'r', encoding = 'utf8') as textfile:
@@ -87,9 +45,8 @@ def encrypt(key, iv, salt, infile, outfile):
     cipher = AES.new(key, AES.MODE_CBC, iv)
     
     cipher_text = cipher.encrypt(plain_text)
-    salting_cipher = salting + hexing(cipher_text)
-    encode_text = unhexing(salting_cipher)
-    result_text = b64e(encode_text).decode()
+    salting_cipher = b'Salted__' + unhexing(salt) + cipher_text
+    result_text = b64e(salting_cipher).decode()
     
     text_length = len(result_text)
     block_size = math.ceil(text_length/64)
@@ -114,10 +71,9 @@ def decrypt(key, iv, infile, outfile):
     cipher = AES.new(key, AES.MODE_CBC, iv)
     dec_text = cipher.decrypt(cipher_text)
     
-    padding_with_hex = hexing(dec_text).decode()
-    real_text = remove_text_pad(padding_with_hex)
-    
-    textext = (real_text.split('\r'))   # openssl에서의 암호문 처리 부분
+    real_text = remove_text_pad(dec_text)
+
+    textext = (real_text.split('\r'))   # openssl
     out_text = ""
     for part in textext:
         out_text += part 
@@ -133,7 +89,7 @@ def key_iv_generator(in_dgst_type, in_pwd, in_iter, salt):
     pbkdf2_key = hashlib.pbkdf2_hmac(in_dgst_type, material_pass, salt, in_iter, dklen = 48)
     
     re_key = pbkdf2_key[:32]
-    re_iv = pbkdf2_key[32:]     # iv값은 salt와 password로 부터 도출할 수 있도록 설정
+    re_iv = pbkdf2_key[32:]
     
     return re_key, re_iv
     

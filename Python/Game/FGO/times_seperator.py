@@ -12,6 +12,11 @@ def year_flow(fyear, cyear):
 
 def month_flow(fmon, cmon):
     # 3, 9
+    if(0 == fmon or fmon > 12):
+        return 99
+    if(0 == cmon or cmon > 12):
+        return 99
+    
     
     if(fmon == 12):
         static_month = 0
@@ -21,13 +26,16 @@ def month_flow(fmon, cmon):
     target_month = cmon
     days_count = 0
     
-    for i in range(1, 12):
+    # infinite loop stop
+    stopper = 0
+    
+    while 1:
         if(target_month % 12 == static_month):
             return days_count
         else:
             days_count += month[target_month]
             target_month += 1
-
+            stopper += 1
 
 def seperator(current_time, future_time):
     
@@ -43,7 +51,6 @@ def seperator(current_time, future_time):
     
     return None
 
-for i in range(1, 13):
-    print(month[i])
+gg = month_flow(9, 3)
 
-print(datetime.date.today())
+print(gg)

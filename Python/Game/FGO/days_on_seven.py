@@ -35,7 +35,7 @@ def specially_year(year):
     return year
 
 
-def weeks_getting_stone(start_date, end_date = 0, day_catcher = 0, seven_days_count = 7):
+def weeks_getting_stone(start_date, end_date = 0, day_catcher = 0):
     
     days_achieve = {2 : 'stone', 4 : 'stone', 6 : 'stone'}    
     weeks_achieve = {'stone' : 0, 'hobu' : 0}

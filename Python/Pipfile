@@ -9,6 +9,7 @@ numpy = "*"
 pymysql = "*"
 flask = "*"
 pycryptodomex = "*"
+passlib = "*"
 
 [dev-packages]
 

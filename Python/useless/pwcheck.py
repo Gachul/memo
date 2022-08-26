@@ -1,12 +1,8 @@
 import sys
 import os, string
 
-
 linear_pw = ["01234567890", "9876543210", "qwertyuiop", "QWERTYUIOP", "asdfghjkl", "ASDFGHJKL", "zxcvbnm", "ZXCVBNM", "POIUYTREWQ", "poiuytrewq", "lkjhgfdsa", "LKJHGFDSA", "mnbvcxz", "MNBVCXZ", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcba", 
 "ZYXWVUTSRQPONMLKJIHGFEDCBA"] # pw
-
-
-print(string.punctuation.encode())
 
 def isLinear(passwd):
     for h in range(len(linear_pw)):

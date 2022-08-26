@@ -54,9 +54,9 @@ def check(pw):
 
 input_pwd = sys.argv[1]
 
-def test(input_pwd):
-    isSuccess = check(input_pwd)
-    if(isSuccess == 1):
-        os.system("echo 1")
-    else:
-        os.system("echo 0")
+
+isSuccess = check(input_pwd)
+if(isSuccess == 1):
+    os.system("echo 1")
+else:
+    os.system("echo 0")

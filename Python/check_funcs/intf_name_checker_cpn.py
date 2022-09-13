@@ -10,10 +10,10 @@ def normal_interface(intf):
             return 1
         return 0
     try:
-        interface_number = int(intf[3:])    # check interface number is valid
+        check_number = intf[3:]
+        interface_number = int(check_number)    # check interface number is valid
 
         inter_number = str(interface_number)
-        check_number = intf[3:]
 
         if(inter_number != check_number):
             return 0
@@ -30,7 +30,7 @@ def alias_interface(intf):
     try:
         if(intf[4] == ":"):
             interface_number = int(intf[3])
-            if(interface_number > 20):
+            if(interface_number > 10):
                 return 0
 
             interface_mask = int(intf[5:])
@@ -44,8 +44,13 @@ def alias_interface(intf):
                 return 0
             
         elif(intf[5] == ":"):
-            interface_number = int(intf[3:5])
+            chk_intf = intf[3:5]
+            interface_number = int(chk_intf)
+            
             if(interface_number > 20):
+                return 0
+            
+            if(chk_intf != str(interface_number)):
                 return 0
 
             interface_mask = int(intf[6:])
@@ -71,7 +76,7 @@ def vlan_interface(intf):
     try:
         if(intf[4] == "."):
             interface_number = int(intf[3])
-            if(interface_number > 20):
+            if(interface_number > 10):
                 return 0
 
             interface_mask = int(intf[5:])
@@ -85,8 +90,13 @@ def vlan_interface(intf):
                 return 0
             
         elif(intf[5] == "."):
-            interface_number = int(intf[3:5])
+            chk_intf = intf[3:5]
+            interface_number = int(chk_intf)
+            
             if(interface_number > 20):
+                return 0
+            
+            if(chk_intf != str(interface_number)):
                 return 0
 
             interface_mask = int(intf[6:])

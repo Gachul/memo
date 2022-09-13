@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import external.user_info as uinfo
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_folder = 'static')
 
@@ -18,6 +19,17 @@ def hello():
 @app.route("/izone")
 def introduce_izone():
     return render_template("hiding/izone.html", title = "IZ*ONE")
+
+@app.route("/upload")
+def render_file():
+    return render_template("hiding/upload_file.html")
+
+@app.route("/fileUpload", methods = ["POST"])
+def upload_file():
+    if(request.method == "POST"):
+        f = request.files['file']
+        f.save("D:/Flask_saver/" + secure_filename(f.filename))
+    return "Upload 완료"
 
 @app.route("/login", methods = ["GET", "POST"])
 def user_login():

@@ -10,6 +10,7 @@ pymysql = "*"
 flask = "*"
 pycryptodomex = "*"
 passlib = "*"
+pyautogui = "*"
 
 [dev-packages]
 

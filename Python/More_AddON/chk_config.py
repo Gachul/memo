@@ -1,7 +1,7 @@
 import configparser as cnfp
 
 cfg = cnfp.ConfigParser()
-cfg.read("rubi.cnf")
+cfg.read("C:/Users/com/Desktop/Personal/blueflame/Python/More_addON/rubi.cnf")
 
 iz = cfg['DEFAULT']
 tester = cfg['Testing']

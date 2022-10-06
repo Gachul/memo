@@ -1,0 +1,18 @@
+print(value, ..., end = '\n', sep = "", file=sys.stdout, flush = False)
+
+value = 출력할 문장
+value, value 형식으로 여러 문장을 출력하는 것도 가능하다.
+
+end = "[문장]" 출력의 마지막에 출력할 문장
+Default = "\n"
+
+sep = "[문장]" 출력할 문장이 여러개인 경우 사이 사이에 적용할 문장
+Default = ""
+
+file = [출력 파일] 출력에 사용할 파일
+Default = "sys.stdout"
+
+flush = [True / False]
+flush = True, output이 Flushed
+flush = False, output이 Buffered
+Default = False

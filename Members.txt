@@ -1,0 +1,23 @@
+create user viewer identified by View_0101;
+
+ALTER USER viewer DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;	# Insert 권한 부여
+GRANT connect, resource TO TESTUSER;		# Connect, Create 권한 부여
+
+
+create table smember(s_id int generated always as IDENTITY, s_name varchar2(64), birth varchar2(64), s_group varchar2(64));
+# s_id 를 식별자로 지정 (Auto_Increment)
+
+grant select on smember to system;	# system 계정에 select 권한 부여
+
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('권은비', '1995-09-27', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('미야와키 사쿠라', '1998-03-19', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('강혜원', '1999-07-05', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('최예나', '1999-09-29', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('이채연', '2000-01-11', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('김채원', '2000-08-01', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('김민주', '2001-02-05', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('야부키 나코', '2001-06-18', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('혼다 히토미', '2001-10-06', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('조유리', '2001-10-22', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('안유진', '2003-09-01', '아이즈원');
+INSERT INTO SMEMBER(s_name, birth, s_group) VALUES('장원영', '2004-08-31', '아이즈원');
